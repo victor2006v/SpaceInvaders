@@ -1,0 +1,37 @@
+# Sistema operativo
+# Ignorar archivos de sistema de macOS
+.DS_Store
+
+# Ignorar archivos de sistema de Windows
+Thumbs.db
+
+# Node.js
+# Ignorar las dependencias de Node.js
+/node_modules/
+
+# Archivos de compilación de JavaScript (si usas un bundler como Webpack)
+dist/
+build/
+
+# Archivos de configuración de IDEs
+# Visual Studio Code
+.vscode/
+
+# Archivos de configuración de Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Archivos temporales de editores
+*.swp
+*.swo
+*~
+
+# Otros archivos temporales y de caché
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos de compilación de CSS (si usas preprocesadores como Sass o Less)
+.sass-cache/
+.cache/
