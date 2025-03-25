@@ -1,4 +1,18 @@
-.fondo{
-    background-image: url('../menu/Fondo_Espacio.jpg');
-    background-size: cover;
+*{
+        margin: 0;
+        padding: 0;
 }
+.fondo{
+    background-color: black;
+    /*background-image: url('../menu/Fondo_Espacio.jpg');
+    background-size: cover;
+    */
+}
+body{
+    overflow: hidden;
+}
+/*
+.canvas{
+    border: 1px solid black;
+}
+    */
