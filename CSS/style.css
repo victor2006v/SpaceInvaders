@@ -1,0 +1,12 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.fondo{
+    background-color: black;
+}
+
+body{
+    overflow: hidden;
+}
