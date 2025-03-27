@@ -1,31 +1,82 @@
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-/*Gracias a windows.innerWidth o windows.innerHeigth podemos poner el canvas en pantalla completa sin importar la resolucion de nuestra pantalla*/
-const CANVAS_WIDTH = canvas.width = window.innerWidth
-const CANVAS_HEIGHT = canvas.height = window.innerHeight;
+// Obtener el canvas y su contexto
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
 
-const squidImage = new Image();
-squidImage.src = "../Assets/Sprites_Enemigos/spritesheetSquid.png";
-const spriteWidth = 123; // Ancho 245px/2columnas = 123 redondeado
-const spriteHeight = 102; //Alto 102px/1 columna = 102
-const staggerFrames = 35; // Para la velocidad entre animaciones
-let frameX = 0;
-let frameY = 0;
-let gameFrame = 0;
+// Configurar tamaño dinámico
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-function squidAnimate(){
-    //Limpiar el canvas desde el centro hasta todo el ancho y alto del canvas, es decir que limpia todo el canvas
-    ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-    ctx.drawImage(squidImage, frameX * spriteWidth, frameY * spriteHeight, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight);
-    if(gameFrame % staggerFrames == 0){
-        if (frameX < 1) {
-            frameX++;
-        } else {
-            frameX = 0;
-        }
-    }   
-        
-    gameFrame++;
-    requestAnimationFrame(squidAnimate);
+// Movimiento de los jugadores
+var player1, player2;
+
+// Iniciar el juego
+function startGame() {
+    myGameArea.start();
+    player1 = new component(30, 30, "red", 10, canvas.height - 100); // Jugador 1
+    player2 = new component(30, 30, "blue", 100, canvas.height - 100); // Jugador 2
+}
+
+var myGameArea = {
+    canvas: canvas,
+    context: ctx,
+    keys: {},
+
+    start: function () {
+        window.addEventListener("keydown", (e) => {
+            this.keys[e.key] = true;
+        });
+
+        window.addEventListener("keyup", (e) => {
+            this.keys[e.key] = false;
+        });
+
+        requestAnimationFrame(updateGameArea);
+    },
+
+    clear: function () {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
 };
-squidAnimate();
+
+// Definir el componente de los jugadores
+function component(width, height, color, x, y) {
+    this.width = width;
+    this.height = height;
+    this.speed = 3; // Velocidad constante
+    this.x = x;
+    this.y = y;
+
+    this.update = function () {
+        ctx.fillStyle = color;
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+    };
+
+    this.newPos = function (leftKey, rightKey) {
+        // Movimiento solo en X y con límites
+        if (myGameArea.keys[leftKey] && this.x > 0) {
+            this.x -= this.speed; // Mueve a la izquierda
+        }
+        if (myGameArea.keys[rightKey] && this.x < canvas.width - this.width) {
+            this.x += this.speed; // Mueve a la derecha
+        }
+    };
+}
+
+// Función principal de actualización
+function updateGameArea() {
+    myGameArea.clear();
+
+    // Movimiento de los jugadores
+    player1.newPos("ArrowLeft", "ArrowRight");
+    player1.update();
+    
+    player2.newPos("a", "d");
+    player2.update();
+
+    requestAnimationFrame(updateGameArea); // Mantener animación fluida
+}
+
+// Iniciar el juego cuando cargue la página
+window.onload = function () {
+    startGame();
+};
