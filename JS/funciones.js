@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 /*Gracias a windows.innerWidth o windows.innerHeigth podemos poner el canvas en pantalla completa sin importar la resolucion de nuestra pantalla*/
@@ -32,10 +31,6 @@ const UFOHeight = 102;
 function squidAnimate(){
     //Limpiar el canvas desde el centro hasta todo el ancho y alto del canvas, es decir que limpia todo el canvas
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-    ctx.drawImage(squidImage, frameX * spriteWidth, frameY * spriteHeight, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight);
-    ctx.drawImage(crabImage, frameX * crabWidth, frameY * crabHeight, crabWidth, crabHeight, 0, 100, crabWidth, crabHeight);
-    ctx.drawImage(octopus,  frameX * octopusWidth, frameY * octopusHeight, octopusWidth, octopusHeight, 0, 200, octopusWidth, octopusHeight);
-    ctx.drawImage(UFO, 0*UFOWidth, 0*UFOHeight, UFOWidth, UFOHeight, 0, 300,UFOWidth, UFOHeight); 
     if(gameFrame % staggerFrames == 0){
         if (frameX < 1) {
             frameX++;
@@ -49,13 +44,6 @@ function squidAnimate(){
 };
 squidAnimate();
 
-=======
-
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
 
 var player1, player2;
 var bulletsPlayer1 = [];
@@ -138,7 +126,10 @@ function Bullet(x, y, color) {
 // Función principal de actualización
 function updateGameArea() {
     myGameArea.clear();
-
+    ctx.drawImage(squidImage, frameX * spriteWidth, frameY * spriteHeight, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight);
+    ctx.drawImage(crabImage, frameX * crabWidth, frameY * crabHeight, crabWidth, crabHeight, 0, 100, crabWidth, crabHeight);
+    ctx.drawImage(octopus,  frameX * octopusWidth, frameY * octopusHeight, octopusWidth, octopusHeight, 0, 200, octopusWidth, octopusHeight);
+    ctx.drawImage(UFO, 0*UFOWidth, 0*UFOHeight, UFOWidth, UFOHeight, 0, 300,UFOWidth, UFOHeight); 
     // Movimiento de los jugadores
     player1.newPos("ArrowLeft", "ArrowRight");
     player1.update();
@@ -179,4 +170,4 @@ function updateGameArea() {
 window.onload = function () {
     startGame();
 };
->>>>>>> e2092fbabb3909493a39ce36187ed11dd0b84bcf
+
