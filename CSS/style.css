@@ -1,5 +1,4 @@
 *{
-<<<<<<< HEAD
     margin: 0;
     padding: 0;
 }
@@ -11,25 +10,11 @@
 body{
     overflow: hidden;
 }
-=======
-        margin: 0;
-        padding: 0;
-}
+
 .fondo{
     background-color: black;
-    /*background-image: url('../menu/Fondo_Espacio.jpg');
-    background-size: cover;
-    */
 }
 body{
     overflow: hidden;
 }
-/*
-.canvas{
-    border: 1px solid black;
-}
-    */
-<<<<<<< HEAD
-=======
->>>>>>> db4e94b9b39d7dbe68bd986e1f33db178bf9c63b
->>>>>>> ft-movimiento-enemigos
+
