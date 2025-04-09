@@ -1,15 +1,11 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-
-// ANIMACION SQUID
-
-
 // Configuración del canvas en pantalla completa
 const CANVAS_WIDTH = canvas.width = window.innerWidth;
 const CANVAS_HEIGHT = canvas.height = window.innerHeight;
 
-// ANIMACIONES DE ENEMIGOS
+// ANIMACION SQUID
 
 const squidImage = new Image();
 squidImage.src = "../Assets/Sprites_Enemigos/spritesheetSquid.png";
