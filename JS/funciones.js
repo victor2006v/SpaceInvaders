@@ -29,27 +29,6 @@ const octopusHeight = 102;
 // Disparo de los enemigos
 let bullets = [];
 
-// Clase Bullet
-class Bullet {
-    constructor(x, y, color) {
-        this.x = x;
-        this.y = y;
-        this.width = 5;
-        this.height = 10;
-        this.color = color;
-        this.speed = 4; // Velocidad del disparo
-    }
-
-    update() {
-        ctx.fillStyle = this.color;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
-    }
-
-    newPos() {
-        this.y += this.speed; // Mover las balas hacia abajo
-    }
-}
-
 // Temporizadores de disparo de los enemigos
 let lastShotSquid = 0, lastShotCrab = 0, lastShotOctopus = 0, lastShotUFO = 0;
 const shootCooldownEnemi = 15000; // segundos entre disparos
